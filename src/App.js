@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import logo from './imagens/logo.png'
+import Boton from './componentes/boton'
+import Contador from './componentes/contador';
+import { useState } from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [numClics, setNumClics] = useState(0);
+
+
+    const manejarClic = () => {
+        setNumClics(numClics + 1);
+
+    }
+    const reiniciarContador = () => {
+        setNumClics(0);
+    }
+
+
+    return ( <
+        div className = "App" >
+
+        <
+        div className = 'losAndesLogoContenedor' >
+        <
+        img className = 'LosAndesLogo'
+        src = { logo }
+        alt = 'LogoLosAndes' / >
+        <
+        /div> <
+        div className = 'contenerdorPrincipal' >
+        <
+        Contador numClics = { numClics }
+        /> <
+        Boton texto = 'Clic'
+        esBotonclic = { true }
+        manejarClic = { manejarClic }
+        /> <
+        Boton texto = 'Reiniciar'
+        esBotonclic = { false }
+        manejarClic = { reiniciarContador }
+        /> <
+        /div> <
+        /div>
+    );
 }
 
 export default App;
